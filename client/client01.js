@@ -7,13 +7,6 @@ function startClient(){
   client.on("data",(data)=>{
     console.log("收到服务器发送来的消息",data.toString());
   });
-  client.on("close",(err)=>{
-    if(!err){
-      console.log('客户端close')
-    }else{
-      console.log('客户端连接失败close:',err)
-    }
-  })
   client.on("end",(err)=>{
     if(!err){
       console.log('客户端close')
