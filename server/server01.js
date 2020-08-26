@@ -22,7 +22,8 @@ function startServer(){
       }
     })
     socket.on("error",(err)=>{
-      console.log('连接发生错误:',err.code)
+      console.log('连接发生错误:',err.code);
+      socket.destroy();
     })
   });
   server.listen(8080,()=>{

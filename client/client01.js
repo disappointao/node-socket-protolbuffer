@@ -24,6 +24,7 @@ function startClient(){
   client.on("error",(err)=>{
     if(err){
       console.log('连接发生错误',err.code);
+      client.destroy();
     }
   })
 }
