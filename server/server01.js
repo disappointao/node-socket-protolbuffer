@@ -22,13 +22,18 @@ function startServer(){
         console.log('客户端断开连接失败end',socket.remoteAddress,socket.remotePort)
       }
     })
-    socket.on("error",(err)=>{
-      if(err.code === 'EADDRINUSE'){
-        server.listen(++port)
+    server.on('error', err => {
+      if (err.code === 'EADDRINUSE') {
+        console.log('地址正被使用，重试中...');
+
+        setTimeout(() => {
+          server.close();
+          server.listen(port++);
+        }, 1000);
+      } else {
+        console.error('服务器异常：', err);
       }
-      console.log('连接发生错误:',err.code);
-      socket.destroy();
-    })
+    });
   });
   server.listen(port,()=>{
     console.log('server服务已启动')
