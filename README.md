@@ -8,3 +8,5 @@
 
 net.createServer():创建一个TCP服务器（创建一个net.Server对象）
 
+net.connect():创建一个TCP客户端(创建一个net.Socket对象)
+
